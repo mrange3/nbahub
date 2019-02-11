@@ -19,7 +19,7 @@ today = yyyy  + mm  + dd;
 //====================== Get Request for Todays Games ============
 var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019/date/" + today + "/games.json"
 
-var api = "d5ebfa47-c23c-459b-b340-f9d0bc"
+var api = config.MY_KEY;
 
 $.ajax
 ({
