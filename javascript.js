@@ -38,7 +38,7 @@ $.ajax
     console.log(response.games[0].schedule.homeTeam.abbreviation);
     console.log(response.games[0].schedule.awayTeam.abbreviation);
 
-    var dateFromAPI = response.games[3].schedule.startTime;
+    var dateFromAPI = response.games[0].schedule.startTime;
 
     var localDate = new Date(dateFromAPI);
     var localDateString = localDate.toLocaleDateString(undefined, {  
@@ -53,13 +53,13 @@ $.ajax
     })
     console.log(localTimeString);
 
-    var hTeam = response.games[3].schedule.homeTeam.abbreviation;
-    var aTeam = response.games[3].schedule.awayTeam.abbreviation;
-    var aScore = response.games[3].score.awayScoreTotal;
-    var hScore = response.games[3].score.homeScoreTotal;
+    var hTeam = response.games[0].schedule.homeTeam.abbreviation;
+    var aTeam = response.games[0].schedule.awayTeam.abbreviation;
+    var aScore = response.games[0].score.awayScoreTotal;
+    var hScore = response.games[0].score.homeScoreTotal;
 
 
-    $("#start0").text(localTimeString + "    " + response.games[3].schedule.playedStatus);
+    $("#start0").text(localTimeString + "    " + response.games[0].schedule.playedStatus);
     $("#away-team0").text(aTeam + "     " + aScore);
     $("#home-team0").text(hTeam + "     " + hScore);
 
