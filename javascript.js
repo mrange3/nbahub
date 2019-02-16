@@ -31,6 +31,7 @@ if (mm < 10) {
 // });
 
 today = yyyy + mm + dd;
+today = parseInt(today)-2
 //====================== Get Request for Todays Games ============
 var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/date/" + today + "/games.json"
 
@@ -100,7 +101,7 @@ $.ajax
       }
 
       if (status == "UNPLAYED") {
-        status = "";
+        status = " ";
       }
 
       if (aScore == null) {
@@ -108,27 +109,31 @@ $.ajax
         hScore = 0;
       }
   
-      var htmlString = '<div class="card bg-white text-dark w-20 border border-dark rounded m-1 mb-1" style="width: 235px; height: 145px;">';
-      htmlString += '<div class="row">';
-      htmlString += '<p class="col-4 ml-2 text-left" style=" font-size: 15px;"><small>' + localTimeString + '</small></p>';
-      htmlString += '<p class="text-danger text-center col "style=" font-size: 15px;"><small>' + timeRemaining  + quarter+ '</small></p>';
-      htmlString += '<p class="text-danger col mr-2 text-right"><small>' + status + '</small></p>';
+      var htmlString = '<div class="card  text-dark w-20 border border-dark rounded m-1 mb-1" style="width: 225px; height: 145px; background-color: oldlace;">';
+      htmlString += '<div class="row justify-content-center"">';
+      htmlString += '<table class="table .table-responsive table-borderless table-sm border-white" style="width: 200px; height: 120px;">';
+      htmlString += '<thead class="table-borderless">';
+      htmlString += '<tr>';
+      htmlString += '<th class="table-borderless text-left" style=" font-size: 15px;"><small>' + localTimeString + '</small></th>';
+      htmlString += '<th > </th>';
+      htmlString += '<th class="table-borderless text-danger text-center " style=" font-size: 15px;"><small>' + timeRemaining  + quarter+ '</small></th>';
+      htmlString += '<th class="table-borderless text-danger  text-right" style=" font-size: 15px;"><small>' + status + '</small></th>';
+      htmlString += '</tr>';
+      htmlString += '</thead>';
+      htmlString += '<tbody>';
+      htmlString += '<tr>';
+      htmlString += '<th scope="row" class="table-borderless "><img src="images/logos/'+ aTeam + '.png" height="45px" width="45px">' + " " + aTeam + '</th>'
+      htmlString += '<td class="table-borderless align-middle "> </td>';
+      htmlString += '<td class="table-borderless align-middle "> </td>';
+      htmlString += '<td class="table-borderless  align-middle text-right " style=" font-size: 15px;"><strong>' + aScore + '</strong></td>';
+      htmlString += '</tr>';
+      htmlString += '<tr>';
+      htmlString += '<th scope="row" class=""><img src="images/logos/' + hTeam+ '.png" height="45px" width="45px">' + " " + hTeam + '</th>'
+      htmlString += '<td class="align-middle "> </td>';
+      htmlString += '<td class="align-middle "> </td>';
+      htmlString += '<td class=" text-right align-middle" style=" font-size: 15px;"><strong>' + hScore + '</strong></td>';
+      htmlString += '</tr>';
       htmlString += '</div>';
-      htmlString += '<div class="row">';
-      htmlString += '<p class="  ml-2 col"><img src="images/logos/'+ aTeam + '.png" height="45px" width="45px"></p>'
-      htmlString += '<p class=" col " style="font-family: Kanit, sans-serif;">' + aTeam + '</p>';
-      htmlString += '<p class=" col "></p>';
-      htmlString += '<p class=" col mr-2 text-right" style="font-family: Kanit, sans-serif;"><strong>' + aScore + '</strong></p>';
-      htmlString += '</div>';
-      htmlString += '<div class="row">';
-      htmlString += '<p class=" ml-2 mb-2 col"><img src="images/logos/' + hTeam+ '.png" height="45px" width="45px"></p>'
-      htmlString += '<p class=" col " style="font-family: Kanit, sans-serif;">' + hTeam + '</p>';
-      htmlString += '<p class=" col "></p>';
-      htmlString += '<p class=" col mr-2 text-right" style="font-family: Kanit, sans-serif;"><strong>' + hScore + '</strong></p>';
-      htmlString += '</div>';
-      htmlString += '<div class="row">';
-      // htmlString += '<p class="ml-2 col text-left"><small>' + timeRemaining  + quarter+ '</small></p>';
-      // htmlString += '<p class="text-danger d-inline m-1 col mr-2  text-right"><small>' + status + '</small></p>';
       htmlString += '</div>';
       htmlString += '</div>';
       htmlString += '</div>';
@@ -138,6 +143,5 @@ $.ajax
 
 
   });
-
 
 
