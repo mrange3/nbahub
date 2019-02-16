@@ -32,13 +32,31 @@ today = yyyy + mm + dd;
 today = parseInt(today) 
 
 
+var api = config.MY_KEY;
+
+
+
 
 var gameUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/date/" + today + "/games.json"
 var teamsUrl = "https://api.mysportsfeeds.com/v2.0/pull/nba/current/team_stats_totals.json"
 
+ var dateFromAPI = response.games[0].schedule.startTime;
 
-var api = config.MY_KEY
 
+
+
+
+    var hTeam = response.games[0].schedule.homeTeam.abbreviation;
+    var aTeam = response.games[0].schedule.awayTeam.abbreviation;
+    var aScore = response.games[0].score.awayScoreTotal;
+    var hScore = response.games[0].score.homeScoreTotal;
+
+
+    $("#start0").text(localTimeString + "    " + response.games[0].schedule.playedStatus);
+    $("#away-team0").text(aTeam + "     " + aScore);
+    $("#home-team0").text(hTeam + "     " + hScore);
+
+})
 
 
 
